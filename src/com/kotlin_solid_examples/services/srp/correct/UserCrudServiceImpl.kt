@@ -9,7 +9,7 @@ class UserCrudServiceImpl : UserCrudService {
         private val user2 = User(2, "Martha Johns", "martha.johns@email.com")
         private val user3 = User(3, "Bonny Murray", "bonny.murray@email.com")
 
-        val users = listOf(user1, user2, user3)
+        val users = mutableListOf(user1, user2, user3)
     }
 
     override fun getById(id: Int): User? {
@@ -20,15 +20,27 @@ class UserCrudServiceImpl : UserCrudService {
         return users
     }
 
-    override fun create(user: UserDTO) {
-        println("User ${user.name} has been created")
+    override fun create(userDTO: UserDTO) {
+        users.plus(userDTO)
+        println("User ${userDTO.name} has been created")
     }
 
     override fun remove(id: Int) {
+        users.removeIf { user -> id == user.id }
         println("User $id has been removed")
     }
 
-    override fun update(user: UserDTO) {
-        println("User ${user.name} has been updated")
+    override fun update(id: Int, userDTO: UserDTO) {
+        users.map { user ->
+            run {
+                if (id == user.id) {
+                    user.name = userDTO.name
+                    user.email = userDTO.email
+                    user.customer = userDTO.customer
+                }
+            }
+        }
+
+        println("User $id: ${userDTO.name} has been updated")
     }
 }

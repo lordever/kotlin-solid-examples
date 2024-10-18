@@ -1,5 +1,6 @@
 package com.kotlin_solid_examples
 
+import com.kotlin_solid_examples.dto.UserDTO
 import com.kotlin_solid_examples.models.Customer
 import com.kotlin_solid_examples.models.User
 import com.kotlin_solid_examples.services.srp.correct.UserAuthServiceImpl
@@ -17,6 +18,7 @@ fun main() {
      */
 
     val user = User(1, "John Doe", "john.doe@email.com")
+    val updatedUser = User(1, "Debian Gale", "debian.gale@email.com")
     val customer = Customer(1, "John Doe Customer Acc")
 
     /*--------------------------------------*/
@@ -28,7 +30,7 @@ fun main() {
     println(userService.getById(1))
     println(userService.getAll())
     userService.create(user)
-    userService.update(user)
+    userService.update(2, updatedUser)
     userService.remove(1)
 
     //Customer associations
@@ -42,6 +44,8 @@ fun main() {
     /*--------------------------------------*/
 
     //Correct
+    val userDTO = UserDTO("Debian Gale", "debian.gale@email.com")
+
     val userCrudService = UserCrudServiceImpl()
     val userAuthService = UserAuthServiceImpl()
     val userCustomerAssociationService = UserCustomerAssociationServiceImpl()
@@ -50,8 +54,8 @@ fun main() {
     println(userCrudService.getById(1))
     println(userCrudService.getAll())
 
-    userCrudService.create(user)
-    userCrudService.update(user)
+    userCrudService.create(userDTO)
+    userCrudService.update(1, userDTO)
     userCrudService.remove(1)
 
     //Customer associations

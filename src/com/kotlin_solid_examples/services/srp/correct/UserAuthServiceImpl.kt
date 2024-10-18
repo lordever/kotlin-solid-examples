@@ -1,6 +1,5 @@
 package com.kotlin_solid_examples.services.srp.correct
 
-import com.kotlin_solid_examples.dto.UserDTO
 import com.kotlin_solid_examples.models.User
 
 class UserAuthServiceImpl : UserAuthService {
@@ -8,7 +7,7 @@ class UserAuthServiceImpl : UserAuthService {
         println("User with credentials has been signed in. Username: $username")
     }
 
-    override fun signOut(user: UserDTO) {
+    override fun signOut(user: User) {
         println("User ${user.name} has been signed out")
     }
 }

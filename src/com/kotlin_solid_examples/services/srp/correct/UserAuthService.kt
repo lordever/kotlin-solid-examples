@@ -1,8 +1,8 @@
 package com.kotlin_solid_examples.services.srp.correct
 
-import com.kotlin_solid_examples.dto.UserDTO
+import com.kotlin_solid_examples.models.User
 
 interface UserAuthService {
     fun signIn(username: String, password: String)
-    fun signOut(user: UserDTO)
+    fun signOut(user: User)
 }

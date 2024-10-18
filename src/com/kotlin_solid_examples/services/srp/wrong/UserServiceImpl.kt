@@ -9,7 +9,7 @@ class UserServiceImpl : UserService {
         private val user2 = User(2, "Martha Johns", "martha.johns@email.com")
         private val user3 = User(3, "Bonny Murray", "bonny.murray@email.com")
 
-        val users = listOf(user1, user2, user3)
+        val users = mutableListOf(user1, user2, user3)
     }
 
     override fun getById(id: Int): User? {
@@ -21,15 +21,27 @@ class UserServiceImpl : UserService {
     }
 
     override fun create(user: User) {
+        users.plus(user)
         println("User ${user.name} has been created")
     }
 
     override fun remove(id: Int) {
+        users.removeIf { user -> id == user.id }
         println("User $id has been removed")
     }
 
-    override fun update(user: User) {
-        println("User ${user.name} has been updated")
+    override fun update(id: Int, user: User) {
+        users.map { mappedUser ->
+            run {
+                if (id == user.id) {
+                    mappedUser.name = user.name
+                    mappedUser.email = user.email
+                    mappedUser.customer = user.customer
+                }
+            }
+        }
+
+        println("User $id: ${user.name} has been updated")
     }
 
     override fun signIn(username: String, password: String) {

@@ -6,7 +6,7 @@ import com.kotlin_solid_examples.models.User
 interface UserCrudService {
     fun getById(id: Int): User?
     fun getAll(): List<User>
-    fun create(user: UserDTO)
+    fun create(userDTO: UserDTO)
     fun remove(id: Int)
-    fun update(user: UserDTO)
+    fun update(id: Int, userDTO: UserDTO)
 }
