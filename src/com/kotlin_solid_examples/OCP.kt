@@ -26,8 +26,17 @@ fun main() {
     println("Silver user discount: ${overloadedDiscountCalculator.calculateDiscountBasedOnUserType(UserType.SILVER)}")
 
     /*--------------------------------------*/
+    //Correct approach
+    val discountCalculators = mapOf(
+        UserType.VIP to VIPDiscountCalculator(),
+        UserType.REGULAR to RegularDiscountCalculator(),
+        UserType.PREMIUM to PremiumDiscountCalculator(),
+        UserType.GOLD to GoldDiscountCalculator(),
+        UserType.SILVER to SilverDiscountCalculator()
+    )
 
-
+    val discountCalculator = discountCalculators[UserType.REGULAR]
+    println("Regular user discount: ${discountCalculator?.calculate()}")
 
     /*--------------------------------------*/
     //Correct approach with factory
