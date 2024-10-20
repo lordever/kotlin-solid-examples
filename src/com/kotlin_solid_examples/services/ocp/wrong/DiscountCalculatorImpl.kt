@@ -1,14 +1,15 @@
 package com.kotlin_solid_examples.services.ocp.wrong
 
+import com.kotlin_solid_examples.models.UserType
+
 class DiscountCalculatorImpl : DiscountCalculator {
-    override fun calculateDiscountBasedOnUserType(userType: String): Double {
+    override fun calculateDiscountBasedOnUserType(userType: UserType): Double {
         return when (userType) {
-            "VIP" -> 0.2
-            "Regular" -> 0.1
-            "Premium" -> 0.3
-            "Gold" -> 0.4
-            "Silver" -> 0.15
-            else -> 0.0
+            UserType.VIP -> 0.2
+            UserType.REGULAR -> 0.1
+            UserType.PREMIUM -> 0.3
+            UserType.GOLD -> 0.4
+            UserType.SILVER -> 0.15
         }
     }
 }
