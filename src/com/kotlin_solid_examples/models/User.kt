@@ -4,5 +4,6 @@ data class User(
     var id: Int? = null,
     var name: String? = null,
     var email: String? = null,
+    var type: String? = null,
     var customer: Customer? = null
 )

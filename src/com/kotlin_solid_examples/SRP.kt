@@ -22,8 +22,8 @@ fun main() {
     val customer = Customer(1, "John Doe Customer Acc")
 
     /*--------------------------------------*/
+    //Wrong approach
 
-    //Wrong
     val userService = UserServiceImpl()
 
     //CRUD
@@ -43,7 +43,7 @@ fun main() {
 
     /*--------------------------------------*/
 
-    //Correct
+    //Correct approach
     val userDTO = UserDTO("Debian Gale", "debian.gale@email.com")
 
     val userCrudService = UserCrudServiceImpl()
